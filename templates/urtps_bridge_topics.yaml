@@ -12,7 +12,7 @@ rtps:
     receive: true
   - msg: OffboardControlMode
     receive: true
-  - msg: SensorOpticalFlow
+  - msg: OpticalFlow
     receive: true
   - msg: PositionSetpoint
     receive: true
@@ -31,11 +31,8 @@ rtps:
     send: true
   - msg: VehicleLocalPositionSetpoint
     receive: true
-  - msg: VehicleAttitudeSetpoint
-    receive: true
-  - msg: VehicleRatesSetpoint
-    receive: true
-  - msg: TrajectorySetpoint
+  - base: VehicleLocalPositionSetpoint
+    msg: TrajectorySetpoint
     receive: true
   - msg: VehicleOdometry
     send: true
@@ -45,6 +42,7 @@ rtps:
   - base: VehicleOdometry
     msg: VehicleVisualOdometry
     receive: true
+    send: true
   - msg: VehicleStatus
     send: true
   - msg: VehicleTrajectoryWaypoint
@@ -63,4 +61,12 @@ rtps:
   - msg: TimesyncStatus
     send: true
   - msg: SensorCombined
+    send: true
+  - msg: VehicleLocalPosition
+    send: true
+  - base: VehicleOdometry
+    msg: EstimatorVisualOdometryAligned
+    send: true
+  - base: VehicleOdometry
+    msg: EstimatorOdometry
     send: true
